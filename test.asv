@@ -29,21 +29,30 @@
 % ave fitness - 100 itrs            % higher iterations to average over
 %                                   give more stable training.
 % 
-% map size - 100 x 100              % self-explanatory
+% map size - 10 x 10              % self-explanatory
 %
 % elite agents - 10                 % currently hard-coded into
-%                                   "generation_evolu.m"
+%                                   "generation_evolution.m"
+%
+
+%
+% Recommendations:
+% - run a smaller map as a ratio of number of moves and percent rewards.
+% - either lower the mutation rate or sunset it as a fcn of generation.
+% - bump up the ave fitness, this has a big impact on stability of the
+% strategies over the generations.
+%
 
 clear all
 close all
 
 % sim properties
-generations = 1000; % number of generations to run
-num_moves = 200;    % number of moves each agent can make in single session
-num_fit_ave = 50;  % number of sessions to run to get ave fitness (different maps each time)
-num_agents = 200;   % population size
-len_genome = 243;   % complete state-space (3^5)
-num_actions = 7;    % move up, move down, left, right, rand, stay, pick up
+generations = 1000;     % number of generations to run
+num_moves = 200;        % number of moves each agent can make in single session
+num_fit_ave = 100;      % number of sessions to run to get ave fitness (different maps each time)
+num_agents = 200;       % population size
+len_genome = 243;       % complete state-space (3^5)
+num_actions = 7;        % move up, move down, left, right, rand, stay, pick up
 
 % seed optimizer
 map = generate_map(100, 0.5, 0);               % map side len, prob reward, prob obstacle

@@ -13,8 +13,9 @@ function agents = initialize_agents(gens, num_agents, num_actions, strat_len)
     agents = struct;
     
     for i= 1:num_agents
+        agents(i).strat = zeros(gens, strat_len);
         strategy = randi([1, num_actions], 1, strat_len);
-        agents(i).strat = strategy;
+        agents(i).strat(1,:) = strategy;
 
         fitness = ones(1,gens) .* -inf;   % lower values are worse
         agents(i).gen_fitness = fitness;  % ave fitness for each generation

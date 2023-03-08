@@ -1,7 +1,8 @@
-function [newstrat1, newstrat2] = reproduce(strat1, strat2)
+function [newstrat1, newstrat2] = reproduce(gen, strat1, strat2)
 %REPRODUCE mix two genomes plus some random mutations to create new genome
 %
 % Inputs:
+% -gen             : generation number
 % -strat1           : parent1 genome
 % -strat2           : parent2 genome
 %
@@ -9,7 +10,7 @@ function [newstrat1, newstrat2] = reproduce(strat1, strat2)
 % -newstrat1        : new child #1 genome, mix of parents and random mutation
 % -newstart2        : new child #2 genome
 %
-    mutation_prob = 0.05;                                %TODO: ASSUMES 5% CODON MUTATION RATE (tried 0.01 and 0.025 but got stuck)
+    mutation_prob = 0.05 / log(gen);                     %TODO: ASSUMES 5% CODON MUTATION RATE (tried 0.01 and 0.025 but got stuck)
     strat_len = length(strat1);
     slice = floor(strat_len * rand);                     %TODO: ASSUMES UNIFORM DIST FOR SPLICING OF PARENT GENOMES
     
